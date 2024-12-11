@@ -385,7 +385,8 @@ impl<'a, M: Measurement> Bencher<'a, M> {
 #[cfg(feature = "async")]
 pub struct AsyncBencher<'a, 'b, A: AsyncExecutor, M: Measurement = WallTime> {
     b: &'b mut Bencher<'a, M>,
-    runner: A,
+    /// exposes async runtime of AsyncExecutor
+    pub runner: A,
 }
 #[cfg(feature = "async")]
 impl<'a, 'b, A: AsyncExecutor, M: Measurement> AsyncBencher<'a, 'b, A, M> {
